@@ -17,20 +17,20 @@ client = TelegramClient('client', api_id, api_hash).start(bot_token=bot_token)
 
 @client.on(events.NewMessage(pattern="^/start$"))
 async def start(event):
-  await event.reply("__**🤔Im MentionAll Bot**, I can mention almost all members in group or channel 👻\nClick **/help** for more infomation__\n\n Follow [@omindas](https://github.com/omindadelshan) on Github",
+  await event.reply("__**🤔Im MentionAll Bot**,☀️ I can mention almost all members in group or channel 👻\nClick **/help** for more infomation__\n\n Follow [ominda](https://github.com/omindadelshan) on Github",
                     buttons=(
                       [Button.url('👨‍💻 Channel 👨‍💻', 'https://t.me/sdprojectupdates'),
-                      Button.url('🎈DEV🎈', 'https://t.me/omindas')]
+                      Button.url('🎈DEVELOPER🎈', 'https://t.me/omindas')]
                     ),
                     link_preview=False
                    )
 @client.on(events.NewMessage(pattern="^/help$"))
 async def help(event):
-  helptext = "**Help Menu of MentionAllBot**\n\nCommand: /mentioall\n__You can use this command with text what you want to mention others.__\n`Example: /mentionall Good Morning!`\n__You can you this command as a reply to any message. Bot will tag users to that replied messsage__.\n\nFollow [@AnjanaMadu](https://github.com/AnjanaMadu) on Github"
+  helptext = "**👨‍💻 Welcome To Help Menu of MentionAllBot❤️❤️**\n\nCommand: /mentioall\n__❤️You can use this command with text what you want to mention others.__\n`🤔Example: /mentionall Good Morning!`\n__🎈You can you this command as a reply to any message. 😇Bot will tag users to that replied messsage__.\n\n👨‍💻Follow [Ominda](https://github.com/omindadelshan) on Github"
   await event.reply(helptext,
                     buttons=(
                       [Button.url('👨‍💻 Channel 👨‍💻', 'https://t.me/sdprojectupdates'),
-                      Button.url('🎈DEV🎈', 'https://t.me/omindas')]
+                      Button.url('🎈DEVELOPER🎈', 'https://t.me/omindas')]
                     ),
                     link_preview=False
                    )
@@ -44,7 +44,7 @@ async def mentionall(event):
   async for admin in client.iter_participants(event.chat_id, filter=ChannelParticipantsAdmins):
     admins.append(admin.id)
   if not event.sender_id in admins:
-    return await event.respond("__Only admins can mention all!__")
+    return await event.respond("👨‍💻__Only admins can mention all!__👨‍💻")
   
   if event.pattern_match.group(1):
     mode = "text_on_cmd"
@@ -53,11 +53,11 @@ async def mentionall(event):
     mode = "text_on_reply"
     msg = event.reply_to_msg_id
     if msg == None:
-        return await event.respond("__I can't mention members for older messages! (messages which sended before i added to group)__")
+        return await event.respond("__💎I can't mention members for older messages💎! (☀️messages which sended before i added to group☀️)__")
   elif event.pattern_match.group(1) and event.reply_to_msg_id:
     return await event.respond("__Give me one argument!__")
   else:
-    return await event.respond("__Reply to a message or give me some text to mention others!__")
+    return await event.respond("__🎈Reply to a message or give me some text to mention others🎈!__")
   
   if mode == "text_on_cmd":
     usrnum = 0
