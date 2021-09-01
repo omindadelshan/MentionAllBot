@@ -17,20 +17,20 @@ client = TelegramClient('client', api_id, api_hash).start(bot_token=bot_token)
 
 @client.on(events.NewMessage(pattern="^/start$"))
 async def start(event):
-  await event.reply("__**🤔Im MentionAll Bot**,☀️ I can mention almost all members in group or channel 👻\nClick **/help** for more infomation__\n\n Follow [ominda](https://github.com/omindadelshan) on Github",
+  await event.reply("__**🤔Im MentionAll Bot**, I can mention almost all members in group or channel 👻\nClick **/help** for more infomation__\n\n Follow [ominda](https://github.com/omindadelshan) on Github",
                     buttons=(
-                      [Button.url('👨‍💻 Channel 👨‍💻', 'https://t.me/sdprojectupdates'),
-                      Button.url('🎈DEVELOPER🎈', 'https://t.me/omindas')]
+                      [Button.url('👨‍💻 Channel', 'https://t.me/szbots'),
+                      Button.url('➕ Add Group 🙋‍♀️', 'https://t.me/szmenitionall_bot?startgroup=true')]
                     ),
                     link_preview=False
                    )
 @client.on(events.NewMessage(pattern="^/help$"))
 async def help(event):
-  helptext = "**👨‍💻 Welcome To Help Menu of MentionAllBot❤️❤️**\n\nCommand: /mentioall\n__❤️You can use this command with text what you want to mention others.__\n`🤔Example: /mentionall Good Morning!`\n__🎈You can you this command as a reply to any message. 😇Bot will tag users to that replied messsage__.\n\n👨‍💻Follow [Ominda](https://github.com/omindadelshan) on Github"
+  helptext = "**Welcome To Help Menu of MentionAllBot**\n\nCommand: /mentioall\n__❤️ You can use this command with text what you want to mention others.__\n`🤔Example: /mentionall Good Morning!`\n__🎈You can you this command as a reply to any message.Bot will tag users to that replied messsage__.\n\nFollow [Ominda](https://github.com/omindadelshan) on Github"
   await event.reply(helptext,
                     buttons=(
-                      [Button.url('👨‍💻 Channel 👨‍💻', 'https://t.me/sdprojectupdates'),
-                      Button.url('🎈DEVELOPER🎈', 'https://t.me/omindas')]
+                      [Button.url('👨‍💻 Channel', 'https://t.me/szbots'),
+                      Button.url('➕ Add Group 🙋‍♀️', 'https://t.me/szmenitionall_bot?startgroup=true')]
                     ),
                     link_preview=False
                    )
@@ -38,13 +38,13 @@ async def help(event):
 @client.on(events.NewMessage(pattern="^/mentionall ?(.*)"))
 async def mentionall(event):
   if event.is_private:
-    return await event.respond("__😇This command can be use in groups and channels😇!__")
+    return await event.respond("__This command can be use in groups and channels!__")
   
   admins = []
   async for admin in client.iter_participants(event.chat_id, filter=ChannelParticipantsAdmins):
     admins.append(admin.id)
   if not event.sender_id in admins:
-    return await event.respond("👨‍💻__Only admins can mention all!__👨‍💻")
+    return await event.respond("__Only admins can mention all!__")
   
   if event.pattern_match.group(1):
     mode = "text_on_cmd"
